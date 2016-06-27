@@ -1,9 +1,9 @@
 {
-  "name": "shitibikes",
+  "name": "cyclehki",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "react-native start",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
     "lint": "eslint *.js src",
     "android": "react-native run-android",
     "ios": "react-native run-ios"

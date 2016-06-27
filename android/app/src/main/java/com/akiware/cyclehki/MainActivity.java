@@ -1,12 +1,12 @@
-package com.akiware.shitibikes;
+package com.akiware.cyclehki;
 
 import com.facebook.react.ReactActivity;
 import com.airbnb.android.react.maps.MapsPackage;
-import com.AirMaps.AirPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.horcrux.svg.RNSvgPackage;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,7 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "shitibikes";
+        return "cyclehki";
     }
 
     /**
@@ -40,7 +40,6 @@ public class MainActivity extends ReactActivity {
         return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
             new MapsPackage(),
-            new AirPackage(),
             new VectorIconsPackage(),
             new RNSvgPackage()
         );

@@ -8,4 +8,4 @@ class App extends Component {
   }
 }
 
-AppRegistry.registerComponent('shitibikes', () => App)
+AppRegistry.registerComponent('cyclehki', () => App)
