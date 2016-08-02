@@ -109,7 +109,7 @@ class StationsList extends Component {
     )
   }
   renderContent() {
-    if (this.props.stations.loading || (this.props.stations.updated < Date.now() - 60 * 1000)) {
+    if (this.props.stations.loading || (this.props.stations.updated < Date.now() - (60 * 1000))) {
       return (
         <View>
           <Loading flex={0} />

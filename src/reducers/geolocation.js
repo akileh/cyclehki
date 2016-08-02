@@ -15,7 +15,7 @@ export default function geolocation(state = defaultState, action) {
     case GET_GEOLOCATION:
     case WATCH_GEOLOCATION:
       // don't set loading if we already have position we can use
-      if (state.position && state.position.timestamp > Date.now() - 60 * 1000) {
+      if (state.position && state.position.timestamp > Date.now() - (60 * 1000)) {
         return state
       }
       else {
@@ -31,7 +31,7 @@ export default function geolocation(state = defaultState, action) {
     case GET_GEOLOCATION_ERROR:
     case WATCH_GEOLOCATION_ERROR:
       // ignore error if we already have up to date position
-      if (lastPosition && lastPosition.timestamp > Date.now() - 60 * 1000) {
+      if (lastPosition && lastPosition.timestamp > Date.now() - (60 * 1000)) {
         return state
       }
       else {

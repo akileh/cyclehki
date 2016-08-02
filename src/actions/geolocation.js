@@ -1,4 +1,5 @@
 import throttle from 'lodash/throttle'
+
 export const GET_GEOLOCATION = 'GET_GEOLOCATION'
 export const GET_GEOLOCATION_SUCCESS = 'GET_GEOLOCATION_SUCCESS'
 export const GET_GEOLOCATION_ERROR = 'GET_GEOLOCATION_ERROR'

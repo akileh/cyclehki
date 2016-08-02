@@ -1,4 +1,4 @@
-export function getStatusColor(available) {
+export default function getStatusColor(available) {
   if (available === 0) {
     return '#F44336'
   }

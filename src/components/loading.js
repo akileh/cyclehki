@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react'
 import {
   View,
-  Text
+  Text,
+  ActivityIndicator
 } from 'react-native'
-import Spinner from './spinner' // eslint-disable-line import/no-unresolved
 
 function Loading(props) {
   return (
@@ -21,7 +21,9 @@ function Loading(props) {
           marginTop: 16
         }}
         >
-        <Spinner/>
+        <ActivityIndicator
+          size='large'
+          />
       </View>
       {props.message ?
         <Text>

@@ -1,17 +1,17 @@
 import React, { PropTypes } from 'react'
 import MapView from 'react-native-maps'
-import Svg, {
+import Svg, { // eslint-disable-line import/no-named-as-default
   G,
   Circle,
   Path,
   Text
 } from 'react-native-svg'
-import { getStatusColor } from '../statusColor'
+import getStatusColor from '../statusColor'
 import { FILTER_BIKES } from '../actions/stations'
 
 const height = 28
 const padding = 8
-const totalHeight = height + 2 * padding
+const totalHeight = height + (2 * padding)
 const arrowPath = `
   M${padding + 4} ${totalHeight * 0.75}
   L${totalHeight - padding - 4} ${totalHeight * 0.75}
@@ -28,7 +28,7 @@ function Marker(props) {
       title={props.station.name}
       centerOffset={{
         x: 0,
-        y: - height / 2
+        y: -(height / 2)
       }}
       calloutOffset={{
         x: 0,

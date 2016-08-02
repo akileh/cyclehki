@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
-import Marker from './marker'
 import MapView from 'react-native-maps'
-import Loading from './loading' // eslint-disable-line import/no-unresolved
-import Error from './error'
 import { View } from 'react-native'
+import Marker from './marker'
+import Loading from './loading'
+import Error from './error'
 
 class StationsMap extends Component {
   constructor(props) {

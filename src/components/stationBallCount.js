@@ -3,7 +3,7 @@ import {
   View,
   Text
 } from 'react-native'
-import { getStatusColor } from '../statusColor'
+import getStatusColor from '../statusColor'
 
 function StationBallCount(props) {
   return (

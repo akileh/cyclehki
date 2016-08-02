@@ -3,8 +3,8 @@ import {
   View,
   StyleSheet
 } from 'react-native'
-import StationMap from './stationMap'
 import NavigationBar from 'react-native-navbar'
+import StationMap from './stationMap'
 import StationMapHeaderInfo from './stationMapHeaderInfo'
 
 function StationMapHeader(props) {

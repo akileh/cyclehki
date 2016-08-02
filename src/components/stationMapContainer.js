@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Actions } from 'react-native-router-flux'
 import {
   watchStation,
   stopWatchingStation,
 } from '../actions/station'
 import StationMapWrapper from './stationMapWrapper'
-import { Actions } from 'react-native-router-flux'
 
 const mapStateToProps = state => {
   return {
