@@ -6,7 +6,8 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "lint": "eslint *.js src",
     "android": "react-native run-android",
-    "ios": "react-native run-ios"
+    "ios": "react-native run-ios",
+    "fix-react-native-maps": "sed -i -e 's/React\\/RCTView.h/RCTView.h/g' node_modules/react-native-maps/ios/AirMaps/AIRMapCallout.h && sed -i -e 's/<React\\/RCTComponent.h>/\\\"RCTComponent.h\\\"/g' node_modules/react-native-maps/ios/AirMaps/AIRMap.h" 
   },
   "dependencies": {
     "babel-preset-es2015": "^6.9.0",
