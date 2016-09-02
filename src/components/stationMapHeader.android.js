@@ -1,8 +1,5 @@
 import React, { PropTypes, Component } from 'react'
-import {
-  View,
-  BackAndroid
-} from 'react-native'
+import { View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import StationMap from './stationMap'
 import StationMapHeaderInfo from './stationMapHeaderInfo'
@@ -11,12 +8,6 @@ class StationMapHeader extends Component {
   constructor(props) {
     super(props)
     this.back = this.back.bind(this)
-  }
-  componentWillMount() {
-    BackAndroid.addEventListener('hardwareBackPress', this.back)
-  }
-  componentWillUnmount() {
-    BackAndroid.removeEventListener('hardwareBackPress', this.back)
   }
   back() {
     this.props.back()
