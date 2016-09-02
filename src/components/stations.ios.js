@@ -25,7 +25,7 @@ class Stations extends Component {
           }}
           >
           <NavigationBar
-            title={{ title: 'Stations' }}
+            title={{ title: 'CycleHKI' }}
             tintColor='#F5F5F5'
             rightButton={{
               title: this.props.stationsView.type === TYPE_LIST ? 'Map' : 'List',

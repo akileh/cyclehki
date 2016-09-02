@@ -18,7 +18,7 @@ class Stations extends Component {
         }}
         >
         <ToolbarAndroid
-          title='Stations'
+          title='CycleHKI'
           actions={[{
             title: this.props.stationsView.type === TYPE_LIST ? 'Map' : 'List',
             titleColor: '#FFFFFF',
