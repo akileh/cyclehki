@@ -33,7 +33,6 @@
 		CB420A4C3439489CA9714DE6 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2646CA0C26BE4BB695EEF0EC /* Octicons.ttf */; };
 		D2F0254ED05544C6A96B503B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E35797D8CE04CB09E72E2A5 /* FontAwesome.ttf */; };
 		E91628EA1798433FACA2CF14 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26C183CB50274B6CBAF22A15 /* Zocial.ttf */; };
-		F2D691651D79F38000EA70D6 /* kamppi.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F2D691641D79F38000EA70D6 /* kamppi.gpx */; };
 		FA3DEDB0C8EA465B87E21E6A /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF3D1669F3194FCA8343DD25 /* Foundation.ttf */; };
 /* End PBXBuildFile section */
 
@@ -174,7 +173,6 @@
 		CBA79A7E9F034F729CDF48BD /* AirMaps.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AirMaps.xcodeproj; path = "../node_modules/react-native-maps/ios/AirMaps.xcodeproj"; sourceTree = "<group>"; };
 		CF3D1669F3194FCA8343DD25 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		EA436C82C5C047398346203C /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
-		F2D691641D79F38000EA70D6 /* kamppi.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = kamppi.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -358,7 +356,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				F2D691641D79F38000EA70D6 /* kamppi.gpx */,
 				13B07FAE1A68108700A75B9A /* cyclehki */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* cyclehkiTests */,
@@ -645,7 +642,6 @@
 				D2F0254ED05544C6A96B503B /* FontAwesome.ttf in Resources */,
 				FA3DEDB0C8EA465B87E21E6A /* Foundation.ttf in Resources */,
 				AD1F5B33F28A4F5498C14E68 /* Ionicons.ttf in Resources */,
-				F2D691651D79F38000EA70D6 /* kamppi.gpx in Resources */,
 				C1F22FD4430B4613AF591D39 /* MaterialIcons.ttf in Resources */,
 				CB420A4C3439489CA9714DE6 /* Octicons.ttf in Resources */,
 				E91628EA1798433FACA2CF14 /* Zocial.ttf in Resources */,
