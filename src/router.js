@@ -1,7 +1,6 @@
 import React from 'react'
 import { Provider, connect } from 'react-redux'
 import { Router, Scene } from 'react-native-router-flux'
-import { Platform } from 'react-native'
 import store from './store'
 import StationsContainer from './components/stationsContainer'
 import StationMapContainer from './components/stationMapContainer'
@@ -18,13 +17,11 @@ export default function AppRouter() {
             component={StationsContainer}
             initial={true}
             hideNavBar={true}
-            duration={Platform.OS === 'android' ? 1 : null}
             />
           <Scene
             key='stationMap'
             component={StationMapContainer}
             hideNavBar={true}
-            duration={Platform.OS === 'android' ? 1 : null}
             />
         </Scene>
       </ReduxRouter>

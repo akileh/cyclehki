@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import {
   View,
-  ToolbarAndroid
+  ToolbarAndroid,
+  InteractionManager
 } from 'react-native'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 import StationsListContainer from './stationsListContainer'
@@ -9,7 +10,22 @@ import StationsMapContainer from './stationsMapContainer'
 import { FILTER_BIKES, FILTER_SPACES, TYPE_LIST } from '../actions/stations'
 
 class Stations extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      render: false
+    }
+  }
+  componentDidMount() {
+    InteractionManager.runAfterInteractions(() => {
+      this.setState({ render: true })
+    })
+  }
   render() {
+    if (!this.state.render) {
+      return null
+    }
+
     return (
       <View
         style={{

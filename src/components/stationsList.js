@@ -5,7 +5,8 @@ import {
   ListView,
   TouchableHighlight,
   StyleSheet,
-  AppState
+  AppState,
+  InteractionManager
 } from 'react-native'
 import Station from './station'
 import Loading from './loading' // eslint-disable-line import/no-unresolved
@@ -15,12 +16,18 @@ import { FILTER_BIKES } from '../actions/stations'
 class StationsList extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      render: false
+    }
     this.handleAppStateChange = this.handleAppStateChange.bind(this)
     this.renderHeader = this.renderHeader.bind(this)
     this.stopWatching = this.stopWatching.bind(this)
   }
   componentWillMount() {
     this.handleAppStateChange('active')
+    InteractionManager.runAfterInteractions(() => {
+      this.setState({ render: true })
+    })
   }
   componentDidMount() {
     AppState.addEventListener('change', this.handleAppStateChange)
@@ -109,7 +116,7 @@ class StationsList extends Component {
     )
   }
   renderContent() {
-    if (this.props.stations.loading || (this.props.stations.updated < Date.now() - (60 * 1000))) {
+    if (!this.state.render || this.props.stations.loading || (this.props.stations.updated < Date.now() - (60 * 1000))) {
       return (
         <View>
           <Loading flex={0} />
