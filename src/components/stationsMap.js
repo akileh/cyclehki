@@ -40,7 +40,7 @@ class StationsMap extends Component {
   setMarkers(nextProps) {
     clearTimeout(this.markerTimeout)
     this.markerTimeout = setTimeout(() => {
-      this.setState({ stations: nextProps.stations.data })
+      this.setState({ stations: nextProps.stations.unordered })
     }, 200)
   }
   getInitialRegion(stations) {
@@ -75,9 +75,9 @@ class StationsMap extends Component {
   render() {
     const store = this.props.stations
     const stations = this.state.stations
-    const initialRegion = this.getInitialRegion(this.props.stations.data)
+    const initialRegion = this.getInitialRegion(this.props.stations.unordered)
 
-    if (store.loading || !store.data) {
+    if (store.loading || !store.unordered) {
       return <Loading/>
     }
     else if (store.error) {
@@ -114,7 +114,7 @@ StationsMap.propTypes = {
   stations: PropTypes.shape({
     loading: PropTypes.bool,
     error: PropTypes.any,
-    data: PropTypes.arrayOf(PropTypes.object)
+    unordered: PropTypes.arrayOf(PropTypes.object)
   })
 }
 

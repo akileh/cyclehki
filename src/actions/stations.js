@@ -35,6 +35,11 @@ function fetchStations() {
         throw new Error('failed to parse bikeRentalStations')
       }
     })
+    .then(stations => stations.map(station => Object.assign({}, station, {
+      latitude: station.lat,
+      longitude: station.lon,
+      spacesTotal: station.bikesAvailable + station.spacesAvailable
+    })))
 }
 
 export function getStations() {

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Actions } from 'react-native-router-flux'
+import { pick } from 'underscore'
 import {
   watchStations,
   stopWatchingStations,
@@ -13,7 +14,7 @@ import StationsList from './stationsList'
 
 const mapStateToProps = state => {
   return {
-    stations: state.stations,
+    stations: pick(state.stations, 'loading', 'error', 'updated', 'ordered'),
     geolocation: state.geolocation
   }
 }

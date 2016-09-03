@@ -6,7 +6,6 @@ import {
   WATCH_STATION_SUCCESS,
   WATCH_STATION_ERROR
 } from '../actions/station'
-import { parseStation } from '../parseStation'
 
 const defaultState = {
   data: null,
@@ -29,7 +28,7 @@ export default function stations(state = defaultState, action) {
     case GET_STATION_SUCCESS:
     case WATCH_STATION_SUCCESS:
       return {
-        data: parseStation(action.state),
+        data: action.state,
         updated: Date.now()
       }
     case GET_STATION_ERROR:

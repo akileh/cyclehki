@@ -41,6 +41,11 @@ function fetchStation(id) {
         throw new Error('failed to parse bikeRentalStation')
       }
     })
+    .then(station => Object.assign(station, {
+      latitude: station.lat,
+      longitude: station.lon,
+      spacesTotal: station.bikesAvailable + station.spacesAvailable
+    }))
 }
 
 export function getStation(id) {

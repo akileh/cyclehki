@@ -1,3 +1,4 @@
+import geolib from 'geolib'
 import {
   GET_STATIONS,
   GET_STATIONS_SUCCESS,
@@ -10,10 +11,42 @@ import {
   GET_GEOLOCATION_SUCCESS,
   WATCH_GEOLOCATION_SUCCESS
 } from '../actions/geolocation'
-import { parseStations } from '../parseStation'
+
+function sortStationsByDistance(unordered, position) {
+  return unordered
+    .map(station => {
+      if (position) {
+        return Object.assign({}, station, {
+          distance: geolib.getDistance(
+            {
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
+            },
+            {
+              latitude: station.latitude,
+              longitude: station.longitude
+            },
+            10
+          )
+        })
+      }
+      else {
+        return station
+      }
+    })
+    .sort((a, b) => {
+      if (a.distance === b.distance) {
+        return a.name < b.name ? -1 : 1
+      }
+      else {
+        return a.distance < b.distance ? -1 : 1
+      }
+    })
+}
 
 const defaultState = {
-  data: [],
+  ordered: [],
+  unordered: [],
   updated: 0
 }
 
@@ -23,7 +56,7 @@ export default function stations(state = defaultState, action) {
   switch (action.type) {
     case GET_STATIONS:
     case WATCH_STATIONS:
-      if (state.data && state.data.length > 0) {
+      if (state.unordered && state.unordered.length > 0) {
         return state
       }
       else {
@@ -35,7 +68,8 @@ export default function stations(state = defaultState, action) {
     case GET_STATIONS_SUCCESS:
     case WATCH_STATIONS_SUCCESS:
       return {
-        data: parseStations(action.state, position),
+        unordered: action.state,
+        ordered: sortStationsByDistance(action.state, position),
         updated: Date.now()
       }
     case GET_STATIONS_ERROR:
@@ -48,7 +82,8 @@ export default function stations(state = defaultState, action) {
     case WATCH_GEOLOCATION_SUCCESS:
       position = action.state
       return Object.assign({}, state, {
-        data: parseStations(state.data, position)
+        unordered: action.unordered,
+        ordered: sortStationsByDistance(state.ordered, position)
       })
     default:
       return state

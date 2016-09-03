@@ -132,21 +132,11 @@ class StationsList extends Component {
       )
     }
     else {
-      let stations = this.props.stations.data.sort((a, b) => {
-        if (a.distance === b.distance) {
-          return a.name < b.name ? -1 : 1
-        }
-        else {
-          return a.distance < b.distance ? -1 : 1
-        }
-      })
-      stations = stations.map(station => {
-        return Object.assign(station, {
-          available: this.props.filter === FILTER_BIKES
+      const stations = this.props.stations.ordered.map(station => Object.assign(station, {
+        available: this.props.filter === FILTER_BIKES
             ? station.bikesAvailable
             : station.spacesAvailable
-        })
-      })
+      }))
       let dataSource = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
       dataSource = dataSource.cloneWithRows(stations)
       return (
@@ -203,7 +193,7 @@ StationsList.propTypes = {
     loading: PropTypes.bool,
     error: PropTypes.any,
     updated: PropTypes.number,
-    data: PropTypes.arrayOf(PropTypes.object)
+    ordered: PropTypes.arrayOf(PropTypes.object)
   }),
   geolocation: PropTypes.shape({
     loading: PropTypes.bool,
