@@ -1,62 +1,90 @@
 import React, { PropTypes } from 'react'
+import PureRenderMixin from 'react-addons-pure-render-mixin'
 import {
   View,
-  Text
+  Text,
+  InteractionManager
 } from 'react-native'
 import StationBallCount from './stationBallCount'
 
-function StationMapHeaderInfo(props) {
-  return (
-    <View
-      style={{
-        flexDirection: 'row',
-        padding: 16
-      }}
-      >
-      <View
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexDirection: 'row'
-        }}
-        >
-        <StationBallCount
-          count={props.bikesAvailable}
-          />
+class StationMapHeaderInfo extends React.Component {
+  constructor(props) {
+    super(props)
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
+    this.state = {
+      render: false
+    }
+  }
+  componentDidMount() {
+    InteractionManager.runAfterInteractions(() => {
+      this.setState({ render: true })
+    })
+  }
+  render() {
+    if (typeof this.props.bikesAvailable !== 'number') {
+      return (
         <Text
           style={{
-            fontSize: 16,
-            marginLeft: 8,
-            color: props.textColor
+            padding: 16,
+            fontSize: 16
           }}
-          >
-          Bikes
-        </Text>
-      </View>
-      <View
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexDirection: 'row'
-        }}
-        >
-        <StationBallCount
-          count={props.spacesAvailable}
           />
-        <Text
+      )
+    }
+    else {
+      return (
+        <View
           style={{
-            fontSize: 16,
-            marginLeft: 8,
-            color: props.textColor
+            flexDirection: 'row',
+            padding: 16
           }}
           >
-          Free spaces
-        </Text>
-      </View>
-    </View>
-  )
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexDirection: 'row'
+            }}
+            >
+            <StationBallCount
+              count={this.props.bikesAvailable}
+              />
+            <Text
+              style={{
+                fontSize: 16,
+                marginLeft: 8,
+                color: this.props.textColor
+              }}
+              >
+              Bikes
+            </Text>
+          </View>
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexDirection: 'row'
+            }}
+            >
+            <StationBallCount
+              count={this.props.spacesAvailable}
+              />
+            <Text
+              style={{
+                fontSize: 16,
+                marginLeft: 8,
+                color: this.props.textColor
+              }}
+              >
+              Free spaces
+            </Text>
+          </View>
+        </View>
+      )
+    }
+  }
 }
 
 StationMapHeaderInfo.propTypes = {

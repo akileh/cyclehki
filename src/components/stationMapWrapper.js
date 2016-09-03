@@ -1,15 +1,21 @@
 import React, { Component, PropTypes } from 'react'
+import { AppState } from 'react-native'
 import StationMapHeader from './stationMapHeader' // eslint-disable-line import/no-unresolved
 
-class StationMap extends Component {
+class StationMapWrapper extends Component {
   constructor(props) {
     super(props)
     this.watchStation = this.watchStation.bind(this)
+    this.handleAppStateChange = this.handleAppStateChange.bind(this)
   }
   componentWillMount() {
     this.watchStation()
   }
+  componentDidMount() {
+    AppState.addEventListener('change', this.handleAppStateChange)
+  }
   componentWillUnmount() {
+    AppState.removeEventListener('change', this.handleAppStateChange)
     this.props.stopWatchingStation()
   }
   componentWillReceiveProps(nextProps) {
@@ -33,7 +39,7 @@ class StationMap extends Component {
   }
 }
 
-StationMap.propTypes = {
+StationMapWrapper.propTypes = {
   watchStation: PropTypes.func,
   stopWatchingStation: PropTypes.func,
   paramStation: PropTypes.shape({
@@ -41,4 +47,4 @@ StationMap.propTypes = {
   })
 }
 
-export default StationMap
+export default StationMapWrapper

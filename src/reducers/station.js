@@ -1,3 +1,4 @@
+import { Record } from 'immutable'
 import {
   GET_STATION,
   GET_STATION_SUCCESS,
@@ -6,37 +7,39 @@ import {
   WATCH_STATION_SUCCESS,
   WATCH_STATION_ERROR
 } from '../actions/station'
+import StationRecord from '../records/station'
 
-const defaultState = {
-  data: null,
-  updated: 0
-}
+const defaultState = new Record({
+  data: new StationRecord(),
+  loading: true,
+  error: false
+})()
 
 export default function stations(state = defaultState, action) {
   switch (action.type) {
     case GET_STATION:
     case WATCH_STATION:
-      if (state.data && state.data.length > 0) {
-        return state
+      // don't set loading if we already have data to show
+      if (state.get('data').stationId === state) {
+        return state.set('error', false)
       }
       else {
-        return Object.assign({}, state, {
-          loading: true,
-          error: false
-        })
+        return state
+          .set('data', new StationRecord())
+          .set('loading', true)
+          .set('error', false)
       }
     case GET_STATION_SUCCESS:
     case WATCH_STATION_SUCCESS:
-      return {
-        data: action.state,
-        updated: Date.now()
-      }
+      return state
+        .mergeIn(['data'], new StationRecord(action.state))
+        .set('loading', false)
+        .set('error', false)
     case GET_STATION_ERROR:
     case WATCH_STATION_ERROR:
-      return Object.assign({}, state, {
-        loading: false,
-        error: action.error
-      })
+      return state
+        .set('loading', false)
+        .set('error', action.error)
     default:
       return state
   }

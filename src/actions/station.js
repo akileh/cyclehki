@@ -1,4 +1,5 @@
 import fetch from '../fetch'
+import parseStation from '../parseStation'
 
 export const GET_STATION = 'GET_STATION'
 export const GET_STATION_SUCCESS = 'GET_STATION_SUCCESS'
@@ -15,7 +16,6 @@ const stationFiels = `
   spacesAvailable
   lat
   lon
-  allowDropoff
 `
 const queryOne = (id) => {
   return (
@@ -35,22 +35,20 @@ function fetchStation(id) {
     .then(res => res.json())
     .then(res => {
       if (res && res.data && res.data.bikeRentalStation) {
-        return res.data.bikeRentalStation
+        return parseStation(res.data.bikeRentalStation)
       }
       else {
         throw new Error('failed to parse bikeRentalStation')
       }
     })
-    .then(station => Object.assign(station, {
-      latitude: station.lat,
-      longitude: station.lon,
-      spacesTotal: station.bikesAvailable + station.spacesAvailable
-    }))
 }
 
 export function getStation(id) {
   return dispatch => {
-    dispatch({ type: GET_STATION })
+    dispatch({
+      type: GET_STATION,
+      state: id
+    })
     return fetchStation(id)
       .then(station => {
         dispatch({
@@ -71,7 +69,8 @@ export function getStation(id) {
 export function watchStation(id) {
   return dispatch => {
     dispatch({
-      type: WATCH_STATION
+      type: WATCH_STATION,
+      state: id
     })
     getStation(id)(dispatch)
     clearInterval(watchInterval)
@@ -88,7 +87,7 @@ export function watchStation(id) {
             error
           })
         })
-    }, 10000)
+    }, 5000)
   }
 }
 

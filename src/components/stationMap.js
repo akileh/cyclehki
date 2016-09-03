@@ -16,10 +16,13 @@ class StationMap extends React.Component {
       this.setState({ render: true })
     })
   }
+  shouldComponentUpdate(nextProps, nextState) {
+    return !nextProps.station.equals(this.props.station) || nextState.render !== this.state.render
+  }
   render() {
     const store = this.props.station
 
-    if (!this.state.render || store.loading || !store.data) {
+    if (!this.state.render || store.loading) {
       return <Loading/>
     }
     else if (store.error) {

@@ -1,4 +1,5 @@
 import fetch from '../fetch'
+import parseStation from '../parseStation'
 
 export const GET_STATIONS = 'GET_STATIONS'
 export const GET_STATIONS_SUCCESS = 'GET_STATIONS_SUCCESS'
@@ -17,7 +18,6 @@ const queryAll = `
     spacesAvailable
     lat
     lon
-    allowDropoff
   }
 }
 `
@@ -29,17 +29,12 @@ function fetchStations() {
     .then(res => res.json())
     .then(res => {
       if (res && res.data && Array.isArray(res.data.bikeRentalStations)) {
-        return res.data.bikeRentalStations
+        return res.data.bikeRentalStations.map(parseStation)
       }
       else {
         throw new Error('failed to parse bikeRentalStations')
       }
     })
-    .then(stations => stations.map(station => Object.assign({}, station, {
-      latitude: station.lat,
-      longitude: station.lon,
-      spacesTotal: station.bikesAvailable + station.spacesAvailable
-    })))
 }
 
 export function getStations() {
