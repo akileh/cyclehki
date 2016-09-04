@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import I18n from 'react-native-i18n'
 import {
   View,
   Text,
@@ -35,7 +36,7 @@ function Err(props) {
               textDecorationLine: 'underline'
             }}
             >
-            Try again
+            {I18n.t('tryAgain')}
           </Text>
         : null}
       </View>
@@ -50,7 +51,7 @@ Err.propTypes = {
 }
 
 Err.defaultProps = {
-  message: 'Error happened :(',
+  message: I18n.t('error'),
   flex: 1
 }
 

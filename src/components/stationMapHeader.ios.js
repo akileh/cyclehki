@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import I18n from 'react-native-i18n'
 import {
   View,
   StyleSheet
@@ -25,7 +26,7 @@ function StationMapHeader(props) {
           title={{ title: props.paramStation.name }}
           tintColor='#F5F5F5'
           leftButton={{
-            title: 'Back',
+            title: I18n.t('back'),
             handler: () => {
               props.back()
             }

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import I18n from 'react-native-i18n'
 import {
   View,
   SegmentedControlIOS,
@@ -25,10 +26,10 @@ class Stations extends Component {
           }}
           >
           <NavigationBar
-            title={{ title: 'CycleHKI' }}
+            title={{ title: I18n.t('title') }}
             tintColor='#F5F5F5'
             rightButton={{
-              title: this.props.stationsView.type === TYPE_LIST ? 'Map' : 'List',
+              title: this.props.stationsView.type === TYPE_LIST ? I18n.t('map') : I18n.t('list'),
               handler: this.props.toggleType
             }}
             >
@@ -48,7 +49,10 @@ class Stations extends Component {
           }}
           >
           <SegmentedControlIOS
-            values={['Bikes', 'Free spaces']}
+            values={[
+              I18n.t('bikes'),
+              I18n.t('freeSpaces')
+            ]}
             selectedIndex={this.props.stationsView.filter === FILTER_BIKES ? 0 : 1}
             onChange={this.props.toggleFilter}
             style={{

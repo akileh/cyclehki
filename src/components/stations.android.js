@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import I18n from 'react-native-i18n'
 import {
   View,
   ToolbarAndroid,
@@ -34,9 +35,9 @@ class Stations extends Component {
         }}
         >
         <ToolbarAndroid
-          title='CycleHKI'
+          title={I18n.t('title')}
           actions={[{
-            title: this.props.stationsView.type === TYPE_LIST ? 'Map' : 'List',
+            title: this.props.stationsView.type === TYPE_LIST ? I18n.t('map') : I18n.t('list'),
             titleColor: '#FFFFFF',
             subtitleColor: '#FFFFFF',
             color: '#FFFFFF',
@@ -84,11 +85,11 @@ class Stations extends Component {
             >
             <View
               key={FILTER_BIKES}
-              tabLabel='BIKES'
+              tabLabel={I18n.t('bikes').toUpperCase()}
               />
             <View
               key={FILTER_SPACES}
-              tabLabel='FREE SPACES'
+              tabLabel={I18n.t('freeSpaces').toUpperCase()}
               />
           </ScrollableTabView>
           <View

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import I18n from 'react-native-i18n'
 import {
   View,
   Text,
@@ -71,13 +72,13 @@ class StationsList extends Component {
         {this.props.geolocation.loading ?
           <Loading
             flex={0}
-            message='Locating...'
+            message={I18n.t('locating')}
             />
         : null}
         {this.props.geolocation.error ?
           <Error
             flex={1}
-            message='Error locating :('
+            message={I18n.t('errorLocating')}
             retry={this.props.watchStations}
             />
         : null}
@@ -95,7 +96,7 @@ class StationsList extends Component {
               fontSize: 16
             }}
             >
-            Bikes
+            {I18n.t('bikes')}
           </Text>
           <View
             style={{
@@ -108,7 +109,7 @@ class StationsList extends Component {
                 fontSize: 16
               }}
               >
-              Free spaces
+              {I18n.t('freeSpaces')}
             </Text>
           </View>
         </View>

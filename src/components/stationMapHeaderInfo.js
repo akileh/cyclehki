@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import I18n from 'react-native-i18n'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import {
   View,
@@ -57,7 +58,7 @@ class StationMapHeaderInfo extends React.Component {
                 color: this.props.textColor
               }}
               >
-              Bikes
+              {I18n.t('bikes')}
             </Text>
           </View>
           <View
@@ -78,7 +79,7 @@ class StationMapHeaderInfo extends React.Component {
                 color: this.props.textColor
               }}
               >
-              Free spaces
+              {I18n.t('freeSpaces')}
             </Text>
           </View>
         </View>
