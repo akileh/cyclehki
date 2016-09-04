@@ -13,7 +13,12 @@ I18n.translations = {
     locating: 'Locating...',
     errorLocating: 'Error location :(',
     error: 'Error happened :(',
-    tryAgain: 'Try again'
+    tryAgain: 'Try again',
+    about: 'About',
+    repositoryUrl: 'https://github.com/akileh/cyclehki',
+    chilicornUrl: 'http://spiceprogram.org/chilicorn',
+    openSource: 'Open source',
+    Sponsored: 'Sponsored by Chilicorn'
   },
   fi: {
     back: 'Takaisin',
@@ -23,6 +28,10 @@ I18n.translations = {
     freeSpaces: 'Vapaita paikkoja',
     locating: 'Paikannetaan...',
     errorLocating: 'Virhe paikantaessa :(',
-    tryAgain: 'Yritä uudelleen'
+    error: 'Virhe :(',
+    tryAgain: 'Yritä uudelleen',
+    about: 'Tietoa',
+    openSource: 'Avoin lähdekoodi',
+    Sponsored: 'Chilicornin sponsoroima'
   }
 }

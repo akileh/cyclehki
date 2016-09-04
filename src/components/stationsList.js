@@ -5,6 +5,7 @@ import {
   Text,
   ListView,
   TouchableHighlight,
+  Image,
   StyleSheet,
   AppState,
   InteractionManager
@@ -13,6 +14,7 @@ import Station from './station'
 import Loading from './loading' // eslint-disable-line import/no-unresolved
 import Error from './error'
 import { FILTER_BIKES } from '../actions/stations'
+import chilicorn from '../images/chilicorn.png'
 
 class StationsList extends Component {
   constructor(props) {
@@ -176,6 +178,25 @@ class StationsList extends Component {
                 </TouchableHighlight>
               )
             }}
+            renderFooter={() => {
+              return (
+                <TouchableHighlight
+                  onPress={this.props.gotoChilicorn}
+                  style={{
+                    alignItems: 'center',
+                    padding: 8
+                  }}
+                  >
+                  <Image
+                    style={{
+                      width: 64,
+                      height: 64
+                    }}
+                    source={chilicorn}
+                    />
+                </TouchableHighlight>
+              )
+            }}
             />
         </View>
       )
@@ -185,6 +206,7 @@ class StationsList extends Component {
 
 StationsList.propTypes = {
   gotoStationMap: PropTypes.func,
+  gotoChilicorn: PropTypes.func,
   watchPosition: PropTypes.func,
   stopWatchingPosition: PropTypes.func,
   watchStations: PropTypes.func,

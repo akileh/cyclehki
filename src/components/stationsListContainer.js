@@ -23,6 +23,9 @@ const mapDispatchToProps = dispatch => Object.assign(
   {
     gotoStationMap: station => {
       Actions.stationMap({ paramStation: station })
+    },
+    gotoChilicorn: () => {
+      Actions.chilicorn()
     }
   },
   bindActionCreators({

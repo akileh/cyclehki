@@ -5,6 +5,7 @@ import { Router, Scene } from 'react-native-router-flux'
 import store from './store'
 import StationsContainer from './components/stationsContainer'
 import StationMapContainer from './components/stationMapContainer'
+import Chilicorn from './components/chilicorn' // eslint-disable-line import/no-unresolved
 
 const ReduxRouter = connect()(Router)
 
@@ -23,6 +24,12 @@ export default function AppRouter() {
           <Scene
             key='stationMap'
             component={StationMapContainer}
+            hideNavBar={true}
+            duration={Platform.OS === 'android' ? 1 : null}
+            />
+          <Scene
+            key='chilicorn'
+            component={Chilicorn}
             hideNavBar={true}
             duration={Platform.OS === 'android' ? 1 : null}
             />
