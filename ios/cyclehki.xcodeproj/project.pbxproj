@@ -34,6 +34,10 @@
 		CB420A4C3439489CA9714DE6 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2646CA0C26BE4BB695EEF0EC /* Octicons.ttf */; };
 		D2F0254ED05544C6A96B503B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E35797D8CE04CB09E72E2A5 /* FontAwesome.ttf */; };
 		E91628EA1798433FACA2CF14 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26C183CB50274B6CBAF22A15 /* Zocial.ttf */; };
+		F23E601C1D7C729C004A7221 /* fabric_api_key.secret in Resources */ = {isa = PBXBuildFile; fileRef = F23E601A1D7C729C004A7221 /* fabric_api_key.secret */; };
+		F23E601D1D7C729C004A7221 /* fabric_build_secret.secret in Resources */ = {isa = PBXBuildFile; fileRef = F23E601B1D7C729C004A7221 /* fabric_build_secret.secret */; };
+		F2D691991D7C14EE00EA70D6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D691971D7C14EE00EA70D6 /* Fabric.framework */; };
+		F2D6919C1D7C159C00EA70D6 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D6919B1D7C159C00EA70D6 /* Crashlytics.framework */; };
 		FA3DEDB0C8EA465B87E21E6A /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF3D1669F3194FCA8343DD25 /* Foundation.ttf */; };
 /* End PBXBuildFile section */
 
@@ -189,6 +193,11 @@
 		CBA79A7E9F034F729CDF48BD /* AirMaps.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AirMaps.xcodeproj; path = "../node_modules/react-native-maps/ios/AirMaps.xcodeproj"; sourceTree = "<group>"; };
 		CF3D1669F3194FCA8343DD25 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		EA436C82C5C047398346203C /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		F23E601A1D7C729C004A7221 /* fabric_api_key.secret */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fabric_api_key.secret; sourceTree = "<group>"; };
+		F23E601B1D7C729C004A7221 /* fabric_build_secret.secret */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fabric_build_secret.secret; sourceTree = "<group>"; };
+		F2D691971D7C14EE00EA70D6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		F2D691981D7C14EE00EA70D6 /* Answers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Answers.framework; sourceTree = "<group>"; };
+		F2D6919B1D7C159C00EA70D6 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		FA038D9B570742379C942B1D /* libRNI18n.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNI18n.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -215,7 +224,9 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+				F2D6919C1D7C159C00EA70D6 /* Crashlytics.framework in Frameworks */,
 				3818446ABA224F4A85698683 /* libAirMaps.a in Frameworks */,
+				F2D691991D7C14EE00EA70D6 /* Fabric.framework in Frameworks */,
 				5C5269B31CFA4B21BAC9A58D /* libRNSVG.a in Frameworks */,
 				7AB95DC5EC20489E8BCA3ED0 /* libRNVectorIcons.a in Frameworks */,
 				03BA9232A9D749A9B7EAEB8E /* libRNI18n.a in Frameworks */,
@@ -323,6 +334,9 @@
 		376F66C796434CFCB8338F77 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F2D6919B1D7C159C00EA70D6 /* Crashlytics.framework */,
+				F2D691971D7C14EE00EA70D6 /* Fabric.framework */,
+				F2D691981D7C14EE00EA70D6 /* Answers.framework */,
 				22B38812D0A2454BB1DEB7E0 /* Entypo.ttf */,
 				5E8A67E6B4D144009C2F8A71 /* EvilIcons.ttf */,
 				8E35797D8CE04CB09E72E2A5 /* FontAwesome.ttf */,
@@ -375,6 +389,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				F23E60191D7C729C004A7221 /* secrets */,
 				13B07FAE1A68108700A75B9A /* cyclehki */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* cyclehkiTests */,
@@ -418,6 +433,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		F23E60191D7C729C004A7221 /* secrets */ = {
+			isa = PBXGroup;
+			children = (
+				F23E601A1D7C729C004A7221 /* fabric_api_key.secret */,
+				F23E601B1D7C729C004A7221 /* fabric_build_secret.secret */,
+			);
+			path = secrets;
+			sourceTree = "<group>";
+		};
 		F2D691801D7BF33A00EA70D6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,6 +480,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				F2D691961D7C14B100EA70D6 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -685,6 +710,8 @@
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				0AA05BBFEDD74378B8308BDC /* Entypo.ttf in Resources */,
 				A435B8CB7F6B4344A33126E8 /* EvilIcons.ttf in Resources */,
+				F23E601C1D7C729C004A7221 /* fabric_api_key.secret in Resources */,
+				F23E601D1D7C729C004A7221 /* fabric_build_secret.secret in Resources */,
 				D2F0254ED05544C6A96B503B /* FontAwesome.ttf in Resources */,
 				FA3DEDB0C8EA465B87E21E6A /* Foundation.ttf in Resources */,
 				AD1F5B33F28A4F5498C14E68 /* Ionicons.ttf in Resources */,
@@ -710,6 +737,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/packager/react-native-xcode.sh";
+		};
+		F2D691961D7C14B100EA70D6 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FABRIC_API_KEY=`cat ${SRCROOT}/secrets/fabric_api_key.secret`\nFABRIC_BUILD_SECRET=`cat ${SRCROOT}/secrets/fabric_build_secret.secret`\n./Fabric.framework/run ${FABRIC_API_KEY} ${FABRIC_BUILD_SECRET}";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -804,6 +845,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEAD_CODE_STRIPPING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -834,6 +879,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,

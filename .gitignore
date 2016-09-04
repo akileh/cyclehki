@@ -40,3 +40,8 @@ buck-out/
 \.buckd/
 android/app/libs
 android/keystores/debug.keystore
+
+# Fabric
+fabric.properties
+
+ios/secrets/*
