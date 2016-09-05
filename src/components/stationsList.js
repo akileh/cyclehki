@@ -4,15 +4,16 @@ import {
   View,
   Text,
   ListView,
-  TouchableHighlight,
   Image,
   StyleSheet,
+  TouchableOpacity,
   AppState,
   InteractionManager
 } from 'react-native'
 import Station from './station'
 import Loading from './loading' // eslint-disable-line import/no-unresolved
 import Error from './error'
+import TouchableAuto from './touchableAuto' // eslint-disable-line import/no-unresolved
 import { FILTER_BIKES } from '../actions/stations'
 import chilicorn from '../images/chilicorn.png'
 
@@ -166,7 +167,7 @@ class StationsList extends Component {
             }}
             renderRow={ station => {
               return (
-                <TouchableHighlight
+                <TouchableAuto
                   onPress={() => this.props.gotoStationMap(station)}
                   underlayColor='#FFFFFF'
                   >
@@ -175,12 +176,12 @@ class StationsList extends Component {
                       station={station}
                       />
                   </View>
-                </TouchableHighlight>
+                </TouchableAuto>
               )
             }}
             renderFooter={() => {
               return (
-                <TouchableHighlight
+                <TouchableOpacity
                   onPress={this.props.gotoChilicorn}
                   style={{
                     alignItems: 'center',
@@ -194,7 +195,7 @@ class StationsList extends Component {
                     }}
                     source={chilicorn}
                     />
-                </TouchableHighlight>
+                </TouchableOpacity>
               )
             }}
             />

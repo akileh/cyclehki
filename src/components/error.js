@@ -2,13 +2,13 @@ import React, { PropTypes } from 'react'
 import I18n from 'react-native-i18n'
 import {
   View,
-  Text,
-  TouchableHighlight
+  Text
 } from 'react-native'
+import TouchableAuto from './touchableAuto' // eslint-disable-line import/no-unresolved
 
 function Err(props) {
   return (
-    <TouchableHighlight
+    <TouchableAuto
       onPress={props.retry}
       underlayColor='#FFFFFF'
       style={{ flex: props.flex }}
@@ -40,7 +40,7 @@ function Err(props) {
           </Text>
         : null}
       </View>
-    </TouchableHighlight>
+    </TouchableAuto>
   )
 }
 
