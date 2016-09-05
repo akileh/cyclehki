@@ -750,7 +750,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "FABRIC_API_KEY=`cat ${SRCROOT}/secrets/fabric_api_key.secret`\nFABRIC_BUILD_SECRET=`cat ${SRCROOT}/secrets/fabric_build_secret.secret`\n./Fabric.framework/run ${FABRIC_API_KEY} ${FABRIC_BUILD_SECRET}";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n  FABRIC_API_KEY=`cat ${SRCROOT}/secrets/fabric_api_key.secret`\n  FABRIC_BUILD_SECRET=`cat ${SRCROOT}/secrets/fabric_build_secret.secret`\n  ./Fabric.framework/run ${FABRIC_API_KEY} ${FABRIC_BUILD_SECRET}\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 

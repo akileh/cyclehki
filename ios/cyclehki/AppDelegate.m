@@ -35,17 +35,18 @@
   [self.window makeKeyAndVisible];
   
   // Fabric
-  NSURL* resourceURL = [[NSBundle mainBundle] URLForResource:@"fabric_api_key.secret" withExtension:nil];
-  NSStringEncoding usedEncoding;
-  NSString* fabricAPIKey = [NSString stringWithContentsOfURL:resourceURL usedEncoding:&usedEncoding error:NULL];
-  // The string that results from reading the bundle resource contains a trailing
-  // newline character, which we must remove now because Fabric/Crashlytics
-  // can't handle extraneous whitespace.
-  NSCharacterSet* whitespaceToTrim = [NSCharacterSet whitespaceAndNewlineCharacterSet];
-  NSString* fabricAPIKeyTrimmed = [fabricAPIKey stringByTrimmingCharactersInSet:whitespaceToTrim];
-  
-  [Crashlytics startWithAPIKey:fabricAPIKeyTrimmed];
-  [Fabric with:@[[Answers class], [Crashlytics class]]];
+  #ifndef DEBUG
+    NSURL* resourceURL = [[NSBundle mainBundle] URLForResource:@"fabric_api_key.secret" withExtension:nil];
+    NSStringEncoding usedEncoding;
+    NSString* fabricAPIKey = [NSString stringWithContentsOfURL:resourceURL usedEncoding:&usedEncoding error:NULL];
+    // The string that results from reading the bundle resource contains a trailing
+    // newline character, which we must remove now because Fabric/Crashlytics
+    // can't handle extraneous whitespace.
+    NSCharacterSet* whitespaceToTrim = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    NSString* fabricAPIKeyTrimmed = [fabricAPIKey stringByTrimmingCharactersInSet:whitespaceToTrim];
+    [Crashlytics startWithAPIKey:fabricAPIKeyTrimmed];
+    [Fabric with:@[[Answers class], [Crashlytics class]]];
+  #endif
   return YES;
 }
 
