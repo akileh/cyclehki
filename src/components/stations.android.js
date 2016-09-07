@@ -73,7 +73,14 @@ class Stations extends Component {
             tabBarInactiveTextColor='#FFFFFF'
             tabBarUnderlineColor='#FFC107'
             tabBarBackgroundColor='#607D8B'
-            onChangeTab={this.props.toggleFilter}
+            onChangeTab={({ i }) => {
+              if (i === 0 && this.props.stationsView.filter === FILTER_SPACES) {
+                this.props.toggleFilter()
+              }
+              else if (i === 1 && this.props.stationsView.filter === FILTER_BIKES) {
+                this.props.toggleFilter()
+              }
+            }}
             style={{
               flex: 1,
               position: 'absolute',
