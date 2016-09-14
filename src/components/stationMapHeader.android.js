@@ -15,26 +15,26 @@ function StationMapHeader(props) {
       <Bar
         title={props.paramStation.name}
         back={true}
-        />
-      <View
-        style={{
-          height: 56,
-          backgroundColor: '#607D8B',
-          justifyContent: 'center'
-        }}
         >
-        <StationMapHeaderInfo
-          bikesAvailable={props.station.data
-            ? props.station.data.bikesAvailable
-            : null
-          }
-          spacesAvailable={props.station.data
-            ? props.station.data.spacesAvailable
-            : null
-          }
-          textColor='#FFFFFF'
-          />
-      </View>
+        <View
+          style={{
+            height: 56,
+            justifyContent: 'center'
+          }}
+          >
+          <StationMapHeaderInfo
+            bikesAvailable={props.station.data
+              ? props.station.data.bikesAvailable
+              : null
+            }
+            spacesAvailable={props.station.data
+              ? props.station.data.spacesAvailable
+              : null
+            }
+            textColor='#FFFFFF'
+            />
+        </View>
+      </Bar>
       <StationMap
         {...props}
         stationId={props.paramStation.stationId}

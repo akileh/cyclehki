@@ -21,11 +21,11 @@ function BottomBarItem(props) {
       <Icon
         name={`md-${props.icon}`}
         color={props.selected ? selectedColor : unselectedColor}
-        size={20}
+        size={24}
         />
       <Text
         style={{
-          marginTop: -4,
+          marginTop: -3,
           color: props.selected ? selectedColor : unselectedColor
         }}
         >

@@ -29,6 +29,7 @@ class Bar extends Component {
           actions={actions}
           onActionSelected={this.props.onActionSelected}
           contentInsetEnd={0}
+          elevation={4}
           style={{
             backgroundColor: '#607D8B',
             height: 56
@@ -72,9 +73,12 @@ class Bar extends Component {
               </TouchableWithoutFeedback>
             </View>
           : null}
-          </Icon.ToolbarAndroid>
+        </Icon.ToolbarAndroid>
         <View
           elevation={4}
+          style={{
+            backgroundColor: '#607D8B',
+          }}
           >
           {this.props.children}
         </View>

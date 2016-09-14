@@ -21,12 +21,12 @@ const throttled = throttle(
 )
 
 function fetchPosition() {
-  return new Promise(resolve => {
+  return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
       position => resolve(position),
-      (error) => {
+      error => {
         console.warn(error) // eslint-disable-line no-console
-        resolve(null)
+        reject(error)
       },
       positionOptions
     )
@@ -81,6 +81,13 @@ export function watchPosition() {
           },
           positionOptions
         )
+      })
+      .catch(error => {
+        console.warn(error) // eslint-disable-line no-console
+        dispatch({
+          type: WATCH_GEOLOCATION_ERROR,
+          error
+        })
       })
   }
 }

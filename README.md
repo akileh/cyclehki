@@ -1,6 +1,6 @@
 # CycleHKI
 
-[React native](https://facebook.github.io/react-native/) app for Android and iOS. Shows status and location of Helsinki city bike stations.
+[React native](https://facebook.github.io/react-native/) app for [Android](https://play.google.com/store/apps/details?id=com.akiware.cyclehki) and [iOS](https://itunes.apple.com/fi/app/cyclehki/id1150463749). Shows status and location of [Helsinki city bike stations](https://www.hsl.fi/en/citybikes).
 
 ## Dependencies
 

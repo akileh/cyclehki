@@ -70,6 +70,7 @@ class Marker extends Component {
               fill='#FFFFFF'
               />
             <Text
+              key={available}
               x={totalHeight / 2}
               y={padding + 4}
               textAnchor='middle'

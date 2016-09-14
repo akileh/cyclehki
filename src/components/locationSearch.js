@@ -99,24 +99,27 @@ class LocationSearch extends Component {
           renderRow={location => {
             return (
               <TouchableAuto
-                style={{
-                  height: 48,
-                  justifyContent: 'center'
-                }}
                 onPress={() => {
                   this.props.setLocation(this.props.target, location)
                   this.props.back()
                 }}
                 >
-                <Text
+                <View
                   style={{
-                    marginLeft: 16,
-                    marginRight: 16,
-                    fontSize: 16
+                    height: 48,
+                    justifyContent: 'center'
                   }}
                   >
-                  {location.name}
-                </Text>
+                  <Text
+                    style={{
+                      marginLeft: 16,
+                      marginRight: 16,
+                      fontSize: 16
+                    }}
+                    >
+                    {location.name}
+                  </Text>
+                </View>
               </TouchableAuto>
             )
           }}

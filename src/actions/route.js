@@ -43,26 +43,34 @@ function parseRoute(route) {
   const legs = route.legs.map(({ distance, legGeometry }) => {
     return {
       distance,
-      legGeometry: {
-        length: legGeometry.length,
-        points: polyline.decode(legGeometry.points).map(([latitude, longitude]) => {
-          return { latitude, longitude }
-        })
-      }
+      points: polyline.decode(legGeometry.points).map(([latitude, longitude]) => {
+        return { latitude, longitude }
+      })
     }
   })
 
   const points = legs
-    .map(leg => leg.legGeometry.points)
+    .map(leg => leg.points)
     .reduce((previous, current) => previous.concat(current), [])
 
   const region = regionFromPoints(points)
+  const distance = legs.reduce((p, c) => p + c.distance, 0)
+  const humanDistance = `${(distance / 1000).toFixed(1)} km`
 
-  return Object.assign({}, route, {
+  const hours = Math.floor(route.duration / (60 * 60))
+  const minutes = Math.floor((route.duration - (hours * 60 * 60)) / 60)
+  const humanHours = hours > 0 ? `${hours}h ` : ''
+  const humanDuration = `${humanHours}${minutes}min`
+
+  return {
+    duration: route.duration,
+    humanDuration,
+    distance,
+    humanDistance,
     legs,
     region,
     points
-  })
+  }
 }
 
 function fetchRoute(from, to) {
@@ -86,8 +94,13 @@ export function getRoute() {
     const shouldGetLocation = getState().routeSearch.from.myLocation || getState().routeSearch.to.myLocation
     return (shouldGetLocation ? dispatch(getPosition()) : Promise.resolve())
       .then(() => {
-        const { from, to } = getState().routeSearch
-        return fetchRoute(from, to)
+        if (getState().geolocation.error) {
+          throw new Error('geolocation error')
+        }
+        else {
+          const { from, to } = getState().routeSearch
+          return fetchRoute(from, to)
+        }
       })
       .then(route => {
         dispatch({
