@@ -1,5 +1,6 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes, Component } from 'react'
 import MapView from 'react-native-maps'
+import shallowCompare from 'react-addons-shallow-compare'
 import Svg, { // eslint-disable-line import/no-named-as-default
   G,
   Circle,
@@ -19,64 +20,70 @@ const arrowPath = `
   Z
 `
 
-function Marker(props) {
-  const available = props.filter === FILTER_BIKES ? props.station.bikesAvailable : props.station.spacesAvailable
-  const statusColor = getStatusColor(available)
+class Marker extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState)
+  }
+  render() {
+    const props = this.props
+    const available = props.filter === FILTER_BIKES ? props.station.bikesAvailable : props.station.spacesAvailable
+    const statusColor = getStatusColor(available)
 
-  return (
-    <MapView.Marker
-      title={props.station.name}
-      centerOffset={{
-        x: 0,
-        y: -(height / 2)
-      }}
-      calloutOffset={{
-        x: 0,
-        y: 0
-      }}
-      anchor={{
-        x: 0.5,
-        y: 1.0
-      }}
-      description={`${available} / ${props.station.spacesTotal}`}
-      coordinate={{
-        latitude: props.station.latitude,
-        longitude: props.station.longitude
-      }}
-      >
-      <Svg
-        width={totalHeight}
-        height={totalHeight}
+    return (
+      <MapView.Marker
+        title={props.station.name}
+        centerOffset={{
+          x: 0,
+          y: -(height / 2)
+        }}
+        calloutOffset={{
+          x: 0,
+          y: 0
+        }}
+        anchor={{
+          x: 0.5,
+          y: 1.0
+        }}
+        description={`${available} / ${props.station.spacesTotal}`}
+        coordinate={{
+          latitude: props.station.latitude,
+          longitude: props.station.longitude
+        }}
         >
-        <G>
-          <Path
-            d={arrowPath}
-            fill={statusColor}
-            stroke={statusColor}
-            strokeWidth='0'
-            />
-          <Circle
-            cx={totalHeight / 2}
-            cy={totalHeight / 2}
-            r={height / 2}
-            stroke={statusColor}
-            strokeWidth='4'
-            fill='#FFFFFF'
-            />
-          <Text
-            x={totalHeight / 2}
-            y={padding + 4}
-            textAnchor='middle'
-            fontSize={height - 13}
-            fontWeight='normal'
-            stroke='#000000'
-            >
-            {`${available}`}
-          </Text>
-        </G>
-      </Svg>
-    </MapView.Marker>
-  )
+        <Svg
+          width={totalHeight}
+          height={totalHeight}
+          >
+          <G>
+            <Path
+              d={arrowPath}
+              fill={statusColor}
+              stroke={statusColor}
+              strokeWidth='0'
+              />
+            <Circle
+              cx={totalHeight / 2}
+              cy={totalHeight / 2}
+              r={height / 2}
+              stroke={statusColor}
+              strokeWidth='4'
+              fill='#FFFFFF'
+              />
+            <Text
+              x={totalHeight / 2}
+              y={padding + 4}
+              textAnchor='middle'
+              fontSize={height - 13}
+              fontWeight='normal'
+              stroke='#000000'
+              >
+              {`${available}`}
+            </Text>
+          </G>
+        </Svg>
+      </MapView.Marker>
+    )
+  }
 }
 
 Marker.propTypes = {

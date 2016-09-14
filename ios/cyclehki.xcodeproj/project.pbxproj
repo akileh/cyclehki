@@ -26,6 +26,7 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		3818446ABA224F4A85698683 /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FD7279A5E7452EB0F2E54C /* libAirMaps.a */; };
 		5C5269B31CFA4B21BAC9A58D /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4D78E9393F346B5AC71CFA8 /* libRNSVG.a */; };
+		6EA3A4BEB17D42458454D4B9 /* libRNSearchBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89EA4CA790AD4566B12BB262 /* libRNSearchBar.a */; };
 		7AB95DC5EC20489E8BCA3ED0 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8090C312319545E5A78FBF89 /* libRNVectorIcons.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		A435B8CB7F6B4344A33126E8 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E8A67E6B4D144009C2F8A71 /* EvilIcons.ttf */; };
@@ -119,6 +120,13 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		F20CDB5C1D844F9300EC9F00 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F6C77F50A35B473DA5470AC7 /* RNSearchBar.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNSearchBar;
+		};
 		F21C445E1D672EA800C74FF9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A1ED78B9ACCB4C9B9D10E453 /* RNSVG.xcodeproj */;
@@ -187,6 +195,7 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		8090C312319545E5A78FBF89 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		89EA4CA790AD4566B12BB262 /* libRNSearchBar.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSearchBar.a; sourceTree = "<group>"; };
 		8E35797D8CE04CB09E72E2A5 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		A1ED78B9ACCB4C9B9D10E453 /* RNSVG.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSVG.xcodeproj; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; };
 		C4D78E9393F346B5AC71CFA8 /* libRNSVG.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSVG.a; sourceTree = "<group>"; };
@@ -198,6 +207,7 @@
 		F2D691971D7C14EE00EA70D6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		F2D691981D7C14EE00EA70D6 /* Answers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Answers.framework; sourceTree = "<group>"; };
 		F2D6919B1D7C159C00EA70D6 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		F6C77F50A35B473DA5470AC7 /* RNSearchBar.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSearchBar.xcodeproj; path = "../node_modules/react-native-search-bar/RNSearchBar.xcodeproj"; sourceTree = "<group>"; };
 		FA038D9B570742379C942B1D /* libRNI18n.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNI18n.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -230,6 +240,7 @@
 				5C5269B31CFA4B21BAC9A58D /* libRNSVG.a in Frameworks */,
 				7AB95DC5EC20489E8BCA3ED0 /* libRNVectorIcons.a in Frameworks */,
 				03BA9232A9D749A9B7EAEB8E /* libRNI18n.a in Frameworks */,
+				6EA3A4BEB17D42458454D4B9 /* libRNSearchBar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +385,7 @@
 				A1ED78B9ACCB4C9B9D10E453 /* RNSVG.xcodeproj */,
 				76E7297F7827443F859BAFED /* RNVectorIcons.xcodeproj */,
 				02DD6AE0F8BB4C2EAF310774 /* RNI18n.xcodeproj */,
+				F6C77F50A35B473DA5470AC7 /* RNSearchBar.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -405,6 +417,14 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* cyclehki.app */,
 				00E356EE1AD99517003FC87E /* cyclehkiTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F20CDB4C1D844F9300EC9F00 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F20CDB5D1D844F9300EC9F00 /* libRNSearchBar.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -570,6 +590,10 @@
 					ProjectRef = 02DD6AE0F8BB4C2EAF310774 /* RNI18n.xcodeproj */;
 				},
 				{
+					ProductGroup = F20CDB4C1D844F9300EC9F00 /* Products */;
+					ProjectRef = F6C77F50A35B473DA5470AC7 /* RNSearchBar.xcodeproj */;
+				},
+				{
 					ProductGroup = F21C44511D672EA800C74FF9 /* Products */;
 					ProjectRef = A1ED78B9ACCB4C9B9D10E453 /* RNSVG.xcodeproj */;
 				},
@@ -655,6 +679,13 @@
 			fileType = archive.ar;
 			path = libRCTText.a;
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F20CDB5D1D844F9300EC9F00 /* libRNSearchBar.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNSearchBar.a;
+			remoteRef = F20CDB5C1D844F9300EC9F00 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		F21C445F1D672EA800C74FF9 /* libRNSVG.a */ = {
@@ -812,6 +843,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cyclehki.app/cyclehki";
@@ -828,6 +860,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -857,6 +890,7 @@
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-i18n/RNI18n",
+					"$(SRCROOT)/../node_modules/react-native-search-bar/**",
 				);
 				INFOPLIST_FILE = cyclehki/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -891,6 +925,7 @@
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-i18n/RNI18n",
+					"$(SRCROOT)/../node_modules/react-native-search-bar/**",
 				);
 				INFOPLIST_FILE = cyclehki/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -949,6 +984,7 @@
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-i18n/RNI18n",
+					"$(SRCROOT)/../node_modules/react-native-search-bar/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -993,6 +1029,7 @@
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-i18n/RNI18n",
+					"$(SRCROOT)/../node_modules/react-native-search-bar/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;

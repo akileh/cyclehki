@@ -88,22 +88,13 @@ export function stopWatchingStations() {
   }
 }
 
-export const TOGGLE_FILTER = 'TOGGLE_FILTER'
+export const SET_FILTER = 'SET_FILTER'
 export const FILTER_BIKES = 'FILTER_BIKES'
 export const FILTER_SPACES = 'FILTER_SPACES'
 
-export function toggleFilter() {
+export function setFilter(filter) {
   return {
-    type: TOGGLE_FILTER
-  }
-}
-
-export const TOGGLE_TYPE = 'TOGGLE_TYPE'
-export const TYPE_LIST = 'TYPE_LIST'
-export const TYPE_MAP = 'TYPE_MAP'
-
-export function toggleType() {
-  return {
-    type: TOGGLE_TYPE
+    type: SET_FILTER,
+    state: filter
   }
 }

@@ -1,69 +1,53 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import { View } from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons'
 import StationMap from './stationMap'
 import StationMapHeaderInfo from './stationMapHeaderInfo'
+import Bar from './bar' // eslint-disable-line import/no-unresolved
 
-class StationMapHeader extends Component {
-  constructor(props) {
-    super(props)
-    this.back = this.back.bind(this)
-  }
-  back() {
-    this.props.back()
-    return true
-  }
-  render() {
-    return (
+function StationMapHeader(props) {
+  return (
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: '#000000'
+      }}
+      >
+      <Bar
+        title={props.paramStation.name}
+        back={true}
+        />
       <View
         style={{
-          flex: 1,
-          backgroundColor: '#000000'
+          height: 56,
+          backgroundColor: '#607D8B',
+          justifyContent: 'center'
         }}
         >
-        <Icon.ToolbarAndroid
-          title={this.props.paramStation.name}
-          titleColor='#FFFFFF'
-          onIconClicked={this.back}
-          navIconName='md-arrow-back'
-          style={{
-            backgroundColor: '#607D8B',
-            height: 56
-          }}
-          />
-        <View
-          style={{
-            height: 56,
-            backgroundColor: '#607D8B',
-            justifyContent: 'center'
-          }}
-          >
-          <StationMapHeaderInfo
-            bikesAvailable={this.props.station.data
-              ? this.props.station.data.bikesAvailable
-              : this.props.paramStation.bikesAvailable}
-            spacesAvailable={this.props.station.data
-              ? this.props.station.data.spacesAvailable
-              : this.props.paramStation.spacesAvailable}
-            textColor='#FFFFFF'
-            />
-        </View>
-        <StationMap
-          {...this.props}
-          stationId={this.props.paramStation.stationId}
+        <StationMapHeaderInfo
+          bikesAvailable={props.station.data
+            ? props.station.data.bikesAvailable
+            : null
+          }
+          spacesAvailable={props.station.data
+            ? props.station.data.spacesAvailable
+            : null
+          }
+          textColor='#FFFFFF'
           />
       </View>
-    )
-  }
+      <StationMap
+        {...props}
+        stationId={props.paramStation.stationId}
+        />
+    </View>
+  )
 }
 
 StationMapHeader.propTypes = {
   back: PropTypes.func,
   paramStation: PropTypes.shape({
     stationId: PropTypes.string,
-    name: PropTypes.string,
-    bikesAvailable: PropTypes.number,
-    spacesAvailable: PropTypes.number
+    name: PropTypes.string
   }),
   station: PropTypes.shape({
     data: PropTypes.object

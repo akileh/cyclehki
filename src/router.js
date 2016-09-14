@@ -3,11 +3,14 @@ import { Platform } from 'react-native'
 import { Provider, connect } from 'react-redux'
 import { Router, Scene } from 'react-native-router-flux'
 import store from './store'
-import StationsContainer from './components/stationsContainer'
 import StationMapContainer from './components/stationMapContainer'
-import Chilicorn from './components/chilicorn' // eslint-disable-line import/no-unresolved
+import Chilicorn from './components/chilicorn'
+import LocationSearchContainer from './components/locationSearchContainer'
+import RouteContainer from './components/routeContainer'
+import MainContainer from './components/mainContainer'
 
 const ReduxRouter = connect()(Router)
+const duration = Platform.OS === 'android' ? 1 : null
 
 export default function AppRouter() {
   return (
@@ -16,22 +19,35 @@ export default function AppRouter() {
         <Scene key='root'>
           <Scene
             key='main'
-            component={StationsContainer}
+            component={MainContainer}
             initial={true}
             hideNavBar={true}
-            duration={Platform.OS === 'android' ? 1 : null}
+            duration={duration}
             />
           <Scene
             key='stationMap'
             component={StationMapContainer}
             hideNavBar={true}
-            duration={Platform.OS === 'android' ? 1 : null}
+            duration={duration}
+            />
+          <Scene
+            key='locationSearch'
+            component={LocationSearchContainer}
+            initial={false}
+            hideNavBar={true}
+            duration={duration}
+            />
+          <Scene
+            key='route'
+            component={RouteContainer}
+            hideNavBar={true}
+            duration={duration}
             />
           <Scene
             key='chilicorn'
             component={Chilicorn}
             hideNavBar={true}
-            duration={Platform.OS === 'android' ? 1 : null}
+            duration={duration}
             />
         </Scene>
       </ReduxRouter>

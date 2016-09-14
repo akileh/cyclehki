@@ -1,21 +1,23 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { pick } from 'underscore'
 import {
   watchStations,
   stopWatchingStations,
+  setFilter
 } from '../actions/stations'
 import StationsMap from './stationsMap'
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ stations, stationsView }) => {
   return {
-    stations: pick(state.stations, 'loading', 'error', 'updated', 'unordered'),
+    stations,
+    stationsView
   }
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   watchStations,
-  stopWatchingStations
+  stopWatchingStations,
+  setFilter
 }, dispatch)
 
 const StationsMapContainer = connect(

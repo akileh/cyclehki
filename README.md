@@ -8,10 +8,6 @@ Install modules
 
     npm install
 
-Fix react-native-maps [issue](https://github.com/lelandrichardson/react-native-maps/issues/371)
-
-    npm run fix-react-native-maps
-
 Create android/app/gradle.properties as in [android/app/gradle.properties.sample](android/app/gradle.properties.sample).
 
 ## Development

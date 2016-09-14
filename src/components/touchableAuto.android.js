@@ -1,16 +1,28 @@
-import React from 'react'
-import { TouchableNativeFeedback } from 'react-native'
+import React, { PropTypes } from 'react'
+import {
+  TouchableNativeFeedback,
+  View
+} from 'react-native'
 
 function TouchableAuto(props) {
   return (
-    <TouchableNativeFeedback {...props}>
-      {props.children}
+    <TouchableNativeFeedback
+      {...props}
+      background={TouchableNativeFeedback.Ripple('white', true)}
+      >
+      <View
+        style={{
+          flex: 1
+        }}
+        >
+        {props.children}
+      </View>
     </TouchableNativeFeedback>
   )
 }
 
 TouchableAuto.propTypes = {
-  children: React.PropTypes.node
+  children: PropTypes.node
 }
 
 export default TouchableAuto

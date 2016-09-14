@@ -5,7 +5,6 @@ import {
   Text,
   ListView,
   Image,
-  StyleSheet,
   TouchableOpacity,
   AppState,
   InteractionManager
@@ -13,8 +12,8 @@ import {
 import Station from './station'
 import Loading from './loading' // eslint-disable-line import/no-unresolved
 import Error from './error'
+import Bar from './bar' // eslint-disable-line import/no-unresolved
 import TouchableAuto from './touchableAuto' // eslint-disable-line import/no-unresolved
-import { FILTER_BIKES } from '../actions/stations'
 import chilicorn from '../images/chilicorn.png'
 
 class StationsList extends Component {
@@ -29,12 +28,15 @@ class StationsList extends Component {
   }
   componentWillMount() {
     this.handleAppStateChange('active')
+  }
+  componentDidMount() {
+    AppState.addEventListener('change', this.handleAppStateChange)
     InteractionManager.runAfterInteractions(() => {
       this.setState({ render: true })
     })
   }
-  componentDidMount() {
-    AppState.addEventListener('change', this.handleAppStateChange)
+  shouldComponentUpdate(nextProps) {
+    return !nextProps.stations.equals(this.props.stations)
   }
   componentWillUnmount() {
     AppState.removeEventListener('change', this.handleAppStateChange)
@@ -42,12 +44,15 @@ class StationsList extends Component {
   }
   handleAppStateChange(state) {
     if (state === 'active') {
-      this.props.watchPosition()
-      this.props.watchStations()
+      this.startWatching()
     }
     else {
       this.stopWatching()
     }
+  }
+  startWatching() {
+    this.props.watchPosition()
+    this.props.watchStations()
   }
   stopWatching() {
     this.props.stopWatchingPosition()
@@ -136,15 +141,15 @@ class StationsList extends Component {
       )
     }
     else {
-      const stations = this.props.stations.ordered.map(station => Object.assign(station, {
-        available: this.props.filter === FILTER_BIKES
-            ? station.bikesAvailable
-            : station.spacesAvailable
-      }))
       let dataSource = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
-      dataSource = dataSource.cloneWithRows(stations)
+      dataSource = dataSource.cloneWithRows(this.props.stations.ordered.toJS())
       return (
-        <View style={{ flex: 1 }}>
+        <View
+          style={{
+            flex: 1
+          }}
+          >
+          <Bar/>
           <ListView
             enableEmptySections={true}
             initialListSize={10}
@@ -159,21 +164,21 @@ class StationsList extends Component {
                 <View
                   key={`separator_${id}`}
                   style={{
-                    height: StyleSheet.hairLineWidth,
-                    backgroundColor: '#000000'
+                    height: 1,
+                    backgroundColor: 'black',
+                    opacity: 0.12
                   }}
                   />
               )
             }}
-            renderRow={ station => {
+            renderRow={station => {
               return (
                 <TouchableAuto
                   onPress={() => this.props.gotoStationMap(station)}
-                  underlayColor='#FFFFFF'
                   >
                   <View>
                     <Station
-                      station={station}
+                      {...station}
                       />
                   </View>
                 </TouchableAuto>
@@ -212,12 +217,11 @@ StationsList.propTypes = {
   stopWatchingPosition: PropTypes.func,
   watchStations: PropTypes.func,
   stopWatchingStations: PropTypes.func,
-  filter: PropTypes.string,
   stations: PropTypes.shape({
     loading: PropTypes.bool,
     error: PropTypes.any,
     updated: PropTypes.number,
-    ordered: PropTypes.arrayOf(PropTypes.object)
+    ordered: PropTypes.object
   }),
   geolocation: PropTypes.shape({
     loading: PropTypes.bool,

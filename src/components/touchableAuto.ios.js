@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { TouchableOpacity } from 'react-native'
 
 function TouchableAuto(props) {
@@ -10,7 +10,7 @@ function TouchableAuto(props) {
 }
 
 TouchableAuto.propTypes = {
-  children: React.PropTypes.node
+  children: PropTypes.node
 }
 
 export default TouchableAuto

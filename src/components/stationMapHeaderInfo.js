@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import I18n from 'react-native-i18n'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
+import shallowCompare from 'react-addons-shallow-compare'
 import {
   View,
   Text,
@@ -11,7 +11,6 @@ import StationBallCount from './stationBallCount'
 class StationMapHeaderInfo extends React.Component {
   constructor(props) {
     super(props)
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
     this.state = {
       render: false
     }
@@ -20,6 +19,9 @@ class StationMapHeaderInfo extends React.Component {
     InteractionManager.runAfterInteractions(() => {
       this.setState({ render: true })
     })
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState)
   }
   render() {
     if (typeof this.props.bikesAvailable !== 'number') {

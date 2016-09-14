@@ -1,30 +1,45 @@
 import React, { Component, PropTypes } from 'react'
 import MapView from 'react-native-maps'
-import { View } from 'react-native'
+import {
+  View,
+  InteractionManager
+} from 'react-native'
 import Marker from './marker'
 import Loading from './loading'
 import Error from './error'
+import regionFromPoints from '../regionFromPoints'
+import StationsMapControls from './stationsMapControls' // eslint-disable-line import/no-unresolved
+import Bar from './bar' // eslint-disable-line import/no-unresolved
 
 class StationsMap extends Component {
   constructor(props) {
     super(props)
     this.retry = this.retry.bind(this)
-    this.setMarkers = this.setMarkers.bind(this)
     this.state = {
-      stations: []
+      render: false
     }
   }
   componentWillMount() {
     this.retry()
   }
+  componentDidMount() {
+    InteractionManager.runAfterInteractions(() => {
+      this.setState({ render: true })
+    })
+  }
+  shouldComponentUpdate(nextProps) {
+    if (!nextProps.stations.equals(this.props.stations)) {
+      return true
+    }
+    else if (!nextProps.stationsView.equals(this.props.stationsView)) {
+      return true
+    }
+    else {
+      return false
+    }
+  }
   componentWillUnmount() {
     this.props.stopWatchingStations()
-  }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.filter !== this.props.filter) {
-      this.setState({ stations: [] })
-    }
-    this.setMarkers(nextProps)
   }
   handleAppStateChange(state) {
     if (state === 'active') {
@@ -37,25 +52,6 @@ class StationsMap extends Component {
   retry() {
     this.props.watchStations()
   }
-  setMarkers(nextProps) {
-    clearTimeout(this.markerTimeout)
-    this.markerTimeout = setTimeout(() => {
-      this.setState({ stations: nextProps.stations.unordered })
-    }, 200)
-  }
-  getInitialRegion(stations) {
-    const minLatitude = Math.min.apply(null, (stations || []).map(({ latitude }) => latitude))
-    const maxLatitude = Math.max.apply(null, (stations || []).map(({ latitude }) => latitude))
-    const minLongitude = Math.min.apply(null, (stations || []).map(({ longitude }) => longitude))
-    const maxLongitude = Math.max.apply(null, (stations || []).map(({ longitude }) => longitude))
-    const initialRegion = minLatitude && minLatitude !== Infinity ? {
-      latitude: minLatitude + ((maxLatitude - minLatitude) / 2),
-      longitude: minLongitude + ((maxLongitude - minLongitude) / 2),
-      latitudeDelta: Math.abs(maxLatitude - minLatitude) * 1.2,
-      longitudeDelta: Math.abs(maxLongitude - minLongitude) * 1.2
-    } : null
-    return initialRegion
-  }
   renderStations(stations) {
     if (stations) {
       return stations.map(station => {
@@ -63,7 +59,7 @@ class StationsMap extends Component {
           <Marker
             key={station.stationId}
             station={station}
-            filter={this.props.filter}
+            filter={this.props.stationsView.filter}
             />
         )
       })
@@ -74,10 +70,9 @@ class StationsMap extends Component {
   }
   render() {
     const store = this.props.stations
-    const stations = this.state.stations
-    const initialRegion = this.getInitialRegion(this.props.stations.unordered)
+    const initialRegion = regionFromPoints(this.props.stations.unordered.toJS())
 
-    if (store.loading || !store.unordered) {
+    if (!this.state.render || store.loading || !store.unordered) {
       return <Loading/>
     }
     else if (store.error) {
@@ -91,6 +86,12 @@ class StationsMap extends Component {
             backgroundColor: '#FFFFFF'
           }}
           >
+          <Bar>
+            <StationsMapControls
+              filter={this.props.stationsView.filter}
+              setFilter={this.props.setFilter}
+              />
+          </Bar>
           <MapView
             initialRegion={initialRegion}
             showsUserLocation={true}
@@ -99,7 +100,7 @@ class StationsMap extends Component {
               backgroundColor: '#FFFFFF'
             }}
             >
-            {this.renderStations(stations)}
+            {this.renderStations(this.props.stations.unordered)}
           </MapView>
         </View>
       )
@@ -110,11 +111,14 @@ class StationsMap extends Component {
 StationsMap.propTypes = {
   watchStations: PropTypes.func,
   stopWatchingStations: PropTypes.func,
-  filter: PropTypes.string,
+  setFilter: PropTypes.func,
   stations: PropTypes.shape({
     loading: PropTypes.bool,
     error: PropTypes.any,
-    unordered: PropTypes.arrayOf(PropTypes.object)
+    unordered: PropTypes.object
+  }),
+  stationsView: PropTypes.shape({
+    filter: PropTypes.string
   })
 }
 

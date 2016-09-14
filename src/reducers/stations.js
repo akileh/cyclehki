@@ -1,4 +1,5 @@
 import geolib from 'geolib'
+import { Record, List } from 'immutable'
 import {
   GET_STATIONS,
   GET_STATIONS_SUCCESS,
@@ -12,6 +13,7 @@ import {
   WATCH_GEOLOCATION_SUCCESS
 } from '../actions/geolocation'
 
+// TODO move
 function sortStationsByDistance(unordered, position) {
   return unordered
     .map(station => {
@@ -44,11 +46,13 @@ function sortStationsByDistance(unordered, position) {
     })
 }
 
-const defaultState = {
-  ordered: [],
-  unordered: [],
-  updated: 0
-}
+const defaultState = new Record({
+  ordered: new List(),
+  unordered: new List(),
+  updated: 0,
+  loading: false,
+  error: false
+})()
 
 let position
 
@@ -56,35 +60,30 @@ export default function stations(state = defaultState, action) {
   switch (action.type) {
     case GET_STATIONS:
     case WATCH_STATIONS:
-      if (state.unordered && state.unordered.length > 0) {
+      if (!state.unordered && state.unordered.length === 0) {
         return state
+          .set('loading', true)
+          .set('error', false)
       }
       else {
-        return Object.assign({}, state, {
-          loading: true,
-          error: false
-        })
+        return state
       }
     case GET_STATIONS_SUCCESS:
     case WATCH_STATIONS_SUCCESS:
-      return {
-        unordered: action.state,
-        ordered: sortStationsByDistance(action.state, position),
-        updated: Date.now()
-      }
+      return state
+        .set('unordered', new List(action.state))
+        .set('ordered', new List(sortStationsByDistance(action.state, position)))
+        .set('updated', Date.now())
     case GET_STATIONS_ERROR:
     case WATCH_STATIONS_ERROR:
-      return Object.assign({}, state, {
-        loading: false,
-        error: action.error
-      })
+      return state
+        .set('loading', false)
+        .set('error', action.error)
     case GET_GEOLOCATION_SUCCESS:
     case WATCH_GEOLOCATION_SUCCESS:
       position = action.state
-      return Object.assign({}, state, {
-        unordered: action.unordered,
-        ordered: sortStationsByDistance(state.ordered, position)
-      })
+      return state
+        .set('ordered', new List(sortStationsByDistance(state.ordered, position)))
     default:
       return state
   }

@@ -1,12 +1,8 @@
 import React, { PropTypes } from 'react'
-import I18n from 'react-native-i18n'
-import {
-  View,
-  StyleSheet
-} from 'react-native'
-import NavigationBar from 'react-native-navbar'
+import { View } from 'react-native'
 import StationMap from './stationMap'
 import StationMapHeaderInfo from './stationMapHeaderInfo'
+import Bar from './bar' // eslint-disable-line import/no-unresolved
 
 function StationMapHeader(props) {
   return (
@@ -15,29 +11,21 @@ function StationMapHeader(props) {
         flex: 1
       }}
       >
-      <View
-        style={{
-          backgroundColor: '#F5F5F5',
-          borderBottomColor: '#BDBDBD',
-          borderBottomWidth: StyleSheet.hairlineWidth
-        }}
+      <Bar
+        title={props.paramStation.name}
+        back={true}
         >
-        <NavigationBar
-          title={{ title: props.paramStation.name }}
-          tintColor='#F5F5F5'
-          leftButton={{
-            title: I18n.t('back'),
-            handler: () => {
-              props.back()
-            }
-          }}
-          >
-        </NavigationBar>
         <StationMapHeaderInfo
-          bikesAvailable={props.station.data ? props.station.data.bikesAvailable : null}
-          spacesAvailable={props.station.data ? props.station.data.spacesAvailable : null}
+          bikesAvailable={props.station.data
+            ? props.station.data.bikesAvailable
+            : null
+          }
+          spacesAvailable={props.station.data
+            ? props.station.data.spacesAvailable
+            : null
+          }
           />
-      </View>
+      </Bar>
       <StationMap
         {...props}
         stationId={props.paramStation.stationId}

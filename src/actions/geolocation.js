@@ -20,7 +20,7 @@ const throttled = throttle(
   500
 )
 
-function getPosition() {
+function fetchPosition() {
   return new Promise(resolve => {
     navigator.geolocation.getCurrentPosition(
       position => resolve(position),
@@ -33,10 +33,29 @@ function getPosition() {
   })
 }
 
+export function getPosition() {
+  return dispatch => {
+    dispatch({ type: GET_GEOLOCATION })
+    return fetchPosition()
+      .then(currentPosition => {
+        dispatch({
+          type: GET_GEOLOCATION_SUCCESS,
+          state: currentPosition
+        })
+      })
+      .catch(err => {
+        dispatch({
+          type: GET_GEOLOCATION_ERROR,
+          state: err
+        })
+      })
+  }
+}
+
 export function watchPosition() {
   return dispatch => {
     dispatch({ type: WATCH_GEOLOCATION })
-    getPosition()
+    fetchPosition()
       .then(currentPosition => {
         if (currentPosition) {
           dispatch({
