@@ -99,8 +99,8 @@ android {
         applicationId "com.akiware.cyclehki"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 4
-        versionName "0.1.3"
+        versionCode 6
+        versionName "0.2.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
