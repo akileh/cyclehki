@@ -10,6 +10,7 @@
     "fix-react-native-maps": "sed -i -e 's/React\\/RCTView.h/RCTView.h/g' node_modules/react-native-maps/ios/AirMaps/AIRMapCallout.h && sed -i -e 's/<React\\/RCTComponent.h>/\\\"RCTComponent.h\\\"/g' node_modules/react-native-maps/ios/AirMaps/AIRMap.h"
   },
   "dependencies": {
+    "apsl-react-native-button": "^3.0.0",
     "babel-preset-es2015": "^6.9.0",
     "geolib": "^2.0.21",
     "immutable": "^3.8.1",

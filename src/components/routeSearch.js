@@ -10,6 +10,7 @@ import I18n from 'react-native-i18n'
 import shallowCompare from 'react-addons-shallow-compare'
 import RouteSearchLocation from './routeSearchLocation'
 import Bar from './bar' // eslint-disable-line import/no-unresolved
+import Button from './button' // eslint-disable-line import/no-unresolved
 
 const styles = StyleSheet.create({
   target: {
@@ -38,6 +39,7 @@ class RouteSearch extends Component {
     if (!this.state.render) {
       return null
     }
+    const buttonDisabled = !(this.props.routeSearch.from.name && this.props.routeSearch.to.name)
     return (
       <View
         style={{
@@ -93,20 +95,21 @@ class RouteSearch extends Component {
                 />
             </View>
           </View>
-          <TouchableOpacity
+          <View
             style={{
-              marginTop: 16,
-              height: 48,
-              backgroundColor: 'pink',
-              alignItems: 'center',
-              justifyContent: 'center'
+              marginTop: 48
             }}
-            onPress={() => this.props.gotoRoute()}
             >
-            <Text>
-              {I18n.t('searchRoute').toUpperCase()}
-            </Text>
-          </TouchableOpacity>
+            <Button
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+              disabled={buttonDisabled}
+              onPress={() => this.props.gotoRoute()}
+              value={I18n.t('searchRoute').toUpperCase()}
+              />
+          </View>
         </View>
       </View>
     )
