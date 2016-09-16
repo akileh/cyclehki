@@ -46,7 +46,7 @@ class Bar extends Component {
               >
               <TextInput
                 placeholder={I18n.t('search')}
-                placeholderTextColor='white'
+                placeholderTextColor='rgba(255, 255, 255, 0.38)'
                 onChangeText={this.props.onSearch}
                 underlineColorAndroid='#00000000'
                 returnKeyType='search'
