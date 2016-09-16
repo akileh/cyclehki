@@ -2,15 +2,16 @@ import React, { PropTypes, Component } from 'react'
 import {
   View,
   Text,
-  TouchableOpacity,
   InteractionManager,
   StyleSheet
 } from 'react-native'
 import I18n from 'react-native-i18n'
 import shallowCompare from 'react-addons-shallow-compare'
+import { TYPE_OWN_BIKE, TYPE_CITY_BIKE } from '../actions/routeSearch'
 import RouteSearchLocation from './routeSearchLocation'
 import Bar from './bar' // eslint-disable-line import/no-unresolved
 import Button from './button' // eslint-disable-line import/no-unresolved
+import SegmentedControls from './segmentedControls' // eslint-disable-line import/no-unresolved
 
 const styles = StyleSheet.create({
   target: {
@@ -95,9 +96,26 @@ class RouteSearch extends Component {
                 />
             </View>
           </View>
+          <SegmentedControls
+            selected={this.props.routeSearch.type}
+            onSelect={this.props.setType}
+            options={[
+              {
+                label: I18n.t('ownBike'),
+                value: TYPE_OWN_BIKE
+              },
+              {
+                label: I18n.t('cityBike'),
+                value: TYPE_CITY_BIKE
+              }
+            ]}
+            style={{
+              marginTop: 24
+            }}
+            />
           <View
             style={{
-              marginTop: 48
+              marginTop: 24
             }}
             >
             <Button
@@ -119,11 +137,13 @@ class RouteSearch extends Component {
 RouteSearch.propTypes = {
   gotoLocationSearch: PropTypes.func,
   gotoRoute: PropTypes.func,
+  setType: PropTypes.func,
   routeSearch: PropTypes.shape({
     from: PropTypes.object,
     to: PropTypes.object,
     error: PropTypes.any,
-    data: PropTypes.object
+    data: PropTypes.object,
+    type: PropTypes.string
   })
 }
 

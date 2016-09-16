@@ -2,7 +2,9 @@ import { Record } from 'immutable'
 import I18n from 'react-native-i18n'
 import {
   SET_FROM,
-  SET_TO
+  SET_TO,
+  SET_TYPE,
+  TYPE_OWN_BIKE
 } from '../actions/routeSearch'
 import {
   GET_GEOLOCATION_SUCCESS,
@@ -15,7 +17,8 @@ const defaultState = new Record({
     name: I18n.t('myLocation'),
     myLocation: true
   }),
-  to: new LocationRecord()
+  to: new LocationRecord(),
+  type: TYPE_OWN_BIKE
 })()
 
 export default function locations(state = defaultState, action) {
@@ -24,6 +27,8 @@ export default function locations(state = defaultState, action) {
       return state.set('from', new LocationRecord(action.state))
     case SET_TO:
       return state.set('to', new LocationRecord(action.state))
+    case SET_TYPE:
+      return state.set('type', action.state)
     case GET_GEOLOCATION_SUCCESS:
     case WATCH_GEOLOCATION_SUCCESS:
       if (state.from.myLocation || state.to.myLocation) {

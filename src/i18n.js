@@ -26,7 +26,9 @@ I18n.translations = {
     myLocation: 'My location',
     stations: 'Stations',
     route: 'Route',
-    search: 'Search'
+    search: 'Search',
+    ownBike: 'Own bike',
+    cityBike: 'City bike'
   },
   fi: {
     back: 'Takaisin',
@@ -48,6 +50,8 @@ I18n.translations = {
     myLocation: 'Oma sijainti',
     stations: 'Asemat',
     route: 'Reitti',
-    search: 'Hae'
+    search: 'Hae',
+    ownBike: 'Oma pyörä',
+    cityBike: 'Kaupunkipyörä'
   }
 }

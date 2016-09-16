@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Actions } from 'react-native-router-flux'
+import { setType } from '../actions/routeSearch'
 import RouteSearch from './routeSearch' // eslint-disable-line import/no-unresolved
 
 const mapStateToProps = ({ routeSearch }) => {
@@ -19,6 +20,7 @@ const mapDispatchToProps = dispatch => Object.assign(
     }
   },
   bindActionCreators({
+    setType
   }, dispatch)
 )
 

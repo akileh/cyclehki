@@ -7,7 +7,7 @@ export const GET_ROUTE = 'GET_ROUTE'
 export const GET_ROUTE_SUCCESS = 'GET_ROUTE_SUCCESS'
 export const GET_ROUTE_ERROR = 'GET_ROUTE_ERROR'
 
-const queryRoute = (from, to) => {
+const queryRoute = ({ from, to, type }) => {
   return (
     `
     {
@@ -20,7 +20,7 @@ const queryRoute = (from, to) => {
           lat: ${to.latitude},
           lon: ${to.longitude}
         },
-        modes: "BICYCLE"
+        modes: "${type}"
       )
       {
         itineraries {
@@ -73,8 +73,8 @@ function parseRoute(route) {
   }
 }
 
-function fetchRoute(from, to) {
-  return fetch(queryRoute(from, to))
+function fetchRoute(options) {
+  return fetch(queryRoute(options))
     .then(res => res.json())
     .then(res => {
       try {
@@ -98,8 +98,8 @@ export function getRoute() {
           throw new Error('geolocation error')
         }
         else {
-          const { from, to } = getState().routeSearch
-          return fetchRoute(from, to)
+          const { from, to, type } = getState().routeSearch
+          return fetchRoute({ from, to, type })
         }
       })
       .then(route => {
