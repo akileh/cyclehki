@@ -1,5 +1,3 @@
-import throttle from 'lodash/throttle'
-
 export const GET_GEOLOCATION = 'GET_GEOLOCATION'
 export const GET_GEOLOCATION_SUCCESS = 'GET_GEOLOCATION_SUCCESS'
 export const GET_GEOLOCATION_ERROR = 'GET_GEOLOCATION_ERROR'
@@ -14,11 +12,6 @@ const positionOptions = {
   enableHighAccuracy: false
 }
 let watchId
-
-const throttled = throttle(
-  func => func(),
-  500
-)
 
 function fetchPosition() {
   return new Promise((resolve, reject) => {
@@ -65,11 +58,9 @@ export function watchPosition() {
         }
         watchId = navigator.geolocation.watchPosition(
           position => {
-            throttled(() => {
-              dispatch({
-                type: WATCH_GEOLOCATION_SUCCESS,
-                state: position
-              })
+            dispatch({
+              type: WATCH_GEOLOCATION_SUCCESS,
+              state: position
             })
           },
           error => {
