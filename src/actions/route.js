@@ -40,9 +40,10 @@ const queryRoute = ({ from, to, type }) => {
 }
 
 function parseRoute(route) {
-  const legs = route.legs.map(({ distance, legGeometry }) => {
+  const legs = route.legs.map(({ distance, legGeometry, mode }) => {
     return {
       distance,
+      mode,
       points: polyline.decode(legGeometry.points).map(([latitude, longitude]) => {
         return { latitude, longitude }
       })

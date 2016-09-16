@@ -12,15 +12,23 @@ function RouteMap(props) {
       }}
       >
       <MapView.Marker
+        key={'from'}
         coordinate={props.route.points[0]}
         />
       <MapView.Marker
+        key={'to'}
         coordinate={props.route.points[props.route.points.length - 1]}
         />
-      <MapView.Polyline
-        coordinates={props.route.points}
-        strokeWidth={3}
-        />
+      {props.route.legs.map((leg, index) => {
+        return (
+          <MapView.Polyline
+            key={index}
+            coordinates={leg.points}
+            strokeColor={leg.mode === 'WALK' ? 'hotpink' : 'darkgreen'}
+            strokeWidth={3}
+            />
+        )
+      })}
     </MapView>
   )
 }
