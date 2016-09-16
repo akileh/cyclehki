@@ -10,7 +10,6 @@ function Err(props) {
   return (
     <TouchableAuto
       onPress={props.retry}
-      underlayColor='#FFFFFF'
       style={{ flex: props.flex }}
       >
       <View
