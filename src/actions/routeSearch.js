@@ -1,4 +1,5 @@
 import I18n from 'react-native-i18n'
+import { addLocationToHistory } from '../storage'
 
 export const SET_FROM = 'SET_FROM'
 export const SET_TO = 'SET_TO'
@@ -7,6 +8,7 @@ export const TYPE_OWN_BIKE = 'BICYCLE'
 export const TYPE_CITY_BIKE = 'BICYCLE_RENT'
 
 export function setLocation(target, location) {
+  addLocationToHistory(location)
   return {
     type: target === 'from' ? SET_FROM : SET_TO,
     state: location

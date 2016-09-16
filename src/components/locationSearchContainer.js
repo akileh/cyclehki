@@ -2,12 +2,14 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Actions } from 'react-native-router-flux'
 import { setLocation, setMyLocation } from '../actions/routeSearch'
+import { getLocationHistory } from '../actions/locationHistory'
 import { getLocations } from '../actions/locations'
 import LocationSearch from './locationSearch' // eslint-disable-line import/no-unresolved
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ locations, locationHistory }) => {
   return {
-    locations: state.locations
+    locations,
+    locationHistory
   }
 }
 
@@ -20,7 +22,8 @@ const mapDispatchToProps = dispatch => Object.assign(
   bindActionCreators({
     setLocation,
     setMyLocation,
-    getLocations
+    getLocations,
+    getLocationHistory
   }, dispatch)
 )
 

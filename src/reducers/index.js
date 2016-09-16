@@ -8,6 +8,7 @@ import locations from './locations'
 import routeSearch from './routeSearch'
 import route from './route'
 import mainPage from './mainPage'
+import locationHistory from './locationHistory'
 
 export default combineReducers({
   stations,
@@ -18,5 +19,6 @@ export default combineReducers({
   locations,
   routeSearch,
   route,
-  mainPage
+  mainPage,
+  locationHistory
 })
